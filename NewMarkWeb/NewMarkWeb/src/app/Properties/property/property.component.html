@@ -1,0 +1,35 @@
+<div *ngFor="let property of properties">
+    <h2>{{ property.propertyName }}</h2>
+    <button (click)="toggleExpandCollapse(property.propertyId)">
+        {{ property.isExpanded ? 'Collapse' : 'Expand' }}
+    </button>
+    <div *ngIf="property.isExpanded">
+        <h3>Features</h3>
+        <ul>
+            <li *ngFor="let feature of property.features">{{ feature }}</li>
+        </ul>
+        <h3>Highlights</h3>
+        <ul>
+            <li *ngFor="let highlight of property.highlights">{{ highlight }}</li>
+        </ul>
+        <h3>Transportation</h3>
+        <ul>
+            <li *ngFor="let transport of property.transportation">{{ transport.line }}</li>
+        </ul>
+        <h3>Spaces</h3>
+        <ul>
+            <li *ngFor="let space of property.spaces">
+                {{ space.spaceName }}
+                <ul>
+                    <li *ngFor="let rent of space.rentRoll">
+                        <ul>
+                            {{ rent.month }} : {{ rent.rent }}
+                        </ul>
+
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+</div>
